@@ -20,7 +20,20 @@ Status: results are measurements by one person on rented GPUs (Modal) and one Ma
 
 The released code crashed in one kernel at SIFT k=4096 on an A10G and an L40S (one seed per cell, cause not isolated); see results/diag_k4096_*.txt.
 
-Not measured: the authors' RTX 5090 numbers, SPACEV 10M, GloVe-200, DEEP, k above 16,384, search recall, matched-error timing.
+## Matched-error timing (modal_matched.py, 5 seeds, e-means on a finer epoch grid)
+
+Computed by matched_error.py from results/matched_*.csv (interpolated, not measured). Speedup = e-means time to reach o-means' mean held-out error, divided by o-means time.
+
+| Test | o-means budget | Matched-error speedup |
+|---|---|---|
+| SIFT, k=16,384, A10G | 2 epochs (about +0.14% error vs e-means plateau) | about 2.2x (script) |
+| SIFT, k=16,384, A10G | 3 epochs (within noise of plateau) | about 1.6x |
+| SIFT, k=16,384, A10G | 5 epochs (at plateau, 43,324 vs 43,325) | about 1.0x by direct comparison: e-means reaches that error at 2 epochs in 0.097 s vs 0.093 s. The script's interpolation is unreliable on the flat plateau (it prints 2.07 at 5 epochs and 0.61 at 8) |
+| Hard mixture, k=16,384, A100 80GB | 2 to 8 epochs | 1.3x to 2.0x; o-means never reaches e-means' 8-epoch error (111.7 vs 106.1) |
+
+So the equal-epoch 2.4x holds only if you accept slightly higher error; at the best error both methods reach on SIFT it is about 1.0x. Ignore script rows on the SIFT plateau (noise exceeds the error differences).
+
+Not measured: the authors' RTX 5090 numbers, SPACEV 10M, GloVe-200, DEEP, k above 16,384, search recall.
 
 ## Layout
 
