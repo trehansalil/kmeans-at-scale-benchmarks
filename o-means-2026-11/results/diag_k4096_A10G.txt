@@ -1,0 +1,28 @@
+env,torch 2.8.0+cu128;NVIDIA A10G;cc 8.6
+gpu_k,T,blocking,rc,result
+k4096,1.0,0,0,OK 5.797 32 16 8192
+k4096,2.0,0,1,FAIL RuntimeError: Triton Error [CUDA]: an illegal memory access was encountered
+k4096,2.0,1,1,FAIL
+TRACE,File "/usr/local/lib/python3.11/site-packages/faiss/contrib/o_means/triton_two_level.py"; line 307; in two_level_assign
+TRACE,_fine_kernel[(triton.cdiv(R * p; block_t) + G;)](
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/runtime/jit.py"; line 390; in <lambda>
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/runtime/jit.py"; line 617; in run
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/backends/nvidia/driver.py"; line 708; in __call__
+TRACE,RuntimeError: Triton Error [CUDA]: an illegal memory access was encountered
+k4096,3.0,0,1,FAIL RuntimeError: Triton Error [CUDA]: operation not supported on global/shared address space
+k4096,3.0,1,1,FAIL
+TRACE,File "/usr/local/lib/python3.11/site-packages/faiss/contrib/o_means/triton_two_level.py"; line 307; in two_level_assign
+TRACE,_fine_kernel[(triton.cdiv(R * p; block_t) + G;)](
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/runtime/jit.py"; line 390; in <lambda>
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/runtime/jit.py"; line 617; in run
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/backends/nvidia/driver.py"; line 708; in __call__
+TRACE,RuntimeError: Triton Error [CUDA]: an illegal memory access was encountered
+k4096,5.0,0,1,FAIL RuntimeError: Triton Error [CUDA]: an illegal memory access was encountered
+k4096,5.0,1,1,FAIL
+TRACE,File "/usr/local/lib/python3.11/site-packages/faiss/contrib/o_means/triton_two_level.py"; line 307; in two_level_assign
+TRACE,_fine_kernel[(triton.cdiv(R * p; block_t) + G;)](
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/runtime/jit.py"; line 390; in <lambda>
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/runtime/jit.py"; line 617; in run
+TRACE,File "/usr/local/lib/python3.11/site-packages/triton/backends/nvidia/driver.py"; line 708; in __call__
+TRACE,RuntimeError: Triton Error [CUDA]: an illegal memory access was encountered
+DIAG_DONE
