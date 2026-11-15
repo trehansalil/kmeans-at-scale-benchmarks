@@ -1,0 +1,7 @@
+faiss-cpu==1.16.0
+numpy==2.5.4
+scipy
+scikit-learn==1.9.1
+h5py
+matplotlib
+pytest
