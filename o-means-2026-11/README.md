@@ -1,6 +1,6 @@
 # o-means vs e-means vs the k-means family: independent tests
 
-Code and raw results for the blog post "o-means vs k-means: 2.4x Faster at 16,384 Centroids" on saliltrehan.com.
+Code and raw results for the blog post "o-means vs k-means: Speed Gain Shrinks at Matched Error": https://www.saliltrehan.com/post/o-means-vs-kmeans
 
 Status: results are measurements by one person on rented GPUs (Modal) and one Mac mini. They are not a replication of the o-means authors' numbers.
 
